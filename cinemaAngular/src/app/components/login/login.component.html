@@ -1,0 +1,38 @@
+<div class="login">
+    <h1 class="title">Welcome back</h1>
+
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <label for="email" class="form-group">Your Email:</label>
+        <input type="email" class="form-control" placeholder="example@gmail.com"
+            ngModel #email="ngModel" name="email" required
+            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            [ngClass]="{ 'is-invalid': email?.invalid && email.touched }"
+            minlength="5">
+        <div *ngIf="email?.errors?.['required'] && email.touched" class="invalid-feedback">
+            Email is required.
+        </div>
+        <div *ngIf="email?.errors?.['pattern'] && email.touched" class="invalid-feedback">
+            Please enter a valid email address.
+        </div>
+        <br>
+    
+        <label for="password" class="form-group">Your Password:</label>
+        <input type="password" class="form-control" placeholder="Enter your password" 
+            ngModel #password="ngModel" name="password" required
+            [ngClass]="{ 'is-invalid': password?.invalid && password.touched }"
+            minlength="5">
+        <div *ngIf="password?.errors?.['required'] && password.touched" class="invalid-feedback">
+            Password is required.
+        </div>
+        <div *ngIf="password?.errors?.['minlength'] && password.touched" class="invalid-feedback">
+            Password must be at least 5 characters long.
+        </div>
+        <br>
+    
+        <button class="btn btn-primary" type="submit">Login</button>
+        <br> <br>
+        </form>
+    
+    <div class="separator"></div>
+    <p style="color: black;">Don't have an account? <a routerLink="/register">Sign up</a></p>
+</div>

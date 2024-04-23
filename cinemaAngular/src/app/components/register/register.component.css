@@ -1,0 +1,31 @@
+
+.register{
+    background-color: white;
+    width: 40%;
+    margin: 0 auto;
+    padding: 40px;
+    margin-top: 70px;
+    border: 2px rgb(117, 112, 112) solid;
+    border-radius: 8px;
+}
+label{
+    color: black;
+}
+p{
+    text-align: center;
+    font-weight: 400;
+    font-size: larger;
+}
+.title{
+    text-align: center;
+    font-weight: 500;
+    color: rgb(79, 62, 62);
+    font-size: xx-large;
+}
+label{
+    color: black;
+}
+.separator {
+    border-top: 1px solid grey;
+    margin: 20px 0; /* Adjust margin as needed */
+}

@@ -1,0 +1,31 @@
+
+<div *ngIf="movie" class="container">
+    <div class="center-content">
+      <iframe [src]="safeUrl" allowfullscreen frameborder="20px"></iframe>
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img class="img-fluid rounded-start" [src]="movie.imageUrl" alt="Movie Poster">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h1 class="card-title">{{movie.title}}</h1>
+              <p class="card-text">{{movie.description}}</p>
+              <mat-divider></mat-divider>
+              <h3 class="card-text" style="color:rgb(156, 156, 11)">Score: {{movie.rating}}<span>&#9733;</span></h3>
+              <mat-divider></mat-divider>
+              <h3 class="card-text">Release date: <small>{{movie.releaseDate}}</small></h3>
+              <mat-divider></mat-divider>
+              <h3 class="card-text">Genres: <br><small>{{movie.genreList}}</small></h3>
+              <mat-divider></mat-divider>
+              <h3 class="card-text">Cast: <br><small>{{movie.actorList}}</small></h3>
+              <mat-divider></mat-divider> <br>
+              <button [disabled]="touched" (click)="addToWatchList(movie)"  mat-raised-button color="primary">
+                <mat-icon>bookmark</mat-icon>Add to watchlist</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

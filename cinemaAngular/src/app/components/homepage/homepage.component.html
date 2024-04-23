@@ -1,0 +1,23 @@
+<div class="container">
+    <h1 class="title">Welcome to Movie App</h1>
+    <img class="home_image" [src]=imageUrl alt="img">
+    <h2 id="news">Best movies</h2>
+    <div class="card-list">
+        <div class="card" *ngFor="let movie of movieService.movies">
+            <a href="http://localhost:4200/movie/details?title={{movie.title}}">
+                <img [src]=movie.imageUrl>
+            
+            <div class="descriptions">
+                <h1>{{movie.title}}</h1>
+                <p>
+                    {{movie.description}}
+                </p>
+                <button (click)="addToWatchList($event, movie)">
+                    <i class="fab fa-youtube"></i>
+                    Add to watchlist!
+                </button>
+            </div>
+            </a>
+        </div>
+    </div>
+</div>

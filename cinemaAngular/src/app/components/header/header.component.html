@@ -1,0 +1,31 @@
+
+<p>
+  <mat-toolbar>
+    <button [matMenuTriggerFor]="menu" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+<mat-menu #menu="matMenu">
+  <h3 style="color: rgb(79, 62, 62);">Categories</h3>
+  <button (click)="getMoviesByGenre('Action')" mat-menu-item>Action</button>
+  <button (click)="getMoviesByGenre('Adventure')" mat-menu-item>Adventure</button>
+  <button (click)="getMoviesByGenre('Comedy')" mat-menu-item>Comedy</button>
+  <button (click)="getMoviesByGenre('Drama')" mat-menu-item>Drama</button>
+  <button (click)="getMoviesByGenre('Science Fiction')"mat-menu-item>Science Fiction</button>
+  <button (click)="getMoviesByGenre('Thriller')" mat-menu-item>Thriller</button>
+  <button (click)="getMoviesByGenre('Romance')" mat-menu-item>Romance</button>
+  <button (click)="getMoviesByGenre('Crime')" mat-menu-item>Crime</button>
+  <button (click)="getMoviesByGenre('Musical')" mat-menu-item>Musical</button>
+  <button (click)="getMoviesByGenre('Historical')" mat-menu-item>Historical</button>
+
+</mat-menu>
+    <span>
+      <a mat-button href="/home"><mat-icon>home</mat-icon>Home</a>
+    </span>
+    <a mat-button href="/profile"><mat-icon>person</mat-icon>My Profile</a>
+    <a mat-button href="/register">Sign in</a>
+    <span class="example-spacer"></span>
+    
+  </mat-toolbar>
+</p>
+
+

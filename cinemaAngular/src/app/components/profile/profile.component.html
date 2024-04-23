@@ -1,0 +1,24 @@
+<div class="profile">
+    <div class="profile-info">
+        <h2>My Profile</h2>
+        <div class="info">
+            <p><strong>Name:</strong> {{user.name}}</p>
+            <p><strong>Email:</strong> {{user.email}}</p>
+        </div>
+        <button (click)="logout()" class="logout-btn">Logout</button>
+    </div>
+    <div class="watchlist">
+        <h3>My Watchlist</h3>
+        <div *ngFor="let movie of movies" class="movie-card">
+            <img src="{{movie.imageUrl}}" alt="Movie" class="movie-image">
+            <div class="movie-details">
+                <h4>{{movie.title}}</h4>
+                <p>{{movie.description}}</p>
+                <a href="http://localhost:4200/movie/details?title={{movie.title}}">
+                    <button class="btn btn-primary">View</button>
+                </a>
+                <button (click)="removeFromWatchlist(movie)" class="btn btn-danger">Remove</button>
+            </div>
+        </div>
+    </div>
+</div>

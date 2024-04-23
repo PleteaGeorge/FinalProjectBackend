@@ -1,0 +1,71 @@
+.profile {
+    padding-top: 30px;
+    padding-bottom: 16%;
+    width: 100%;
+    margin-top: -20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.profile-info {
+    margin-bottom: 20px;
+}
+
+.watchlist {
+    width: 80%;
+    max-width: 800px;
+}
+
+.watchlist h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.movie-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.movie-card img {
+    width: 120px; /* Adjust width as needed */
+    height: auto;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+
+.movie-card .movie-details {
+    flex: 1;
+}
+
+.movie-card h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.movie-card p {
+    font-size: 16px;
+    color: #666;
+}
+
+.remove-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.remove-btn:hover {
+    background-color: darkred;
+}

@@ -1,0 +1,48 @@
+<div class="register">
+    <h1 class="title">Create account</h1>
+
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <label for="" class="form-group">Your Name:</label>
+        <input type="text" class="form-control" placeholder="Enter your name"
+         ngModel #name="ngModel" name="name" required
+         [ngClass]="{ 'is-invalid': name?.invalid && name.touched  ? true : false }"
+          minlength="5"> <br>
+          <div *ngIf="name?.errors?.['required'] && name.touched" class="invalid-feedback">
+            Name is required.
+        </div>
+        <div *ngIf="name?.errors?.['minlength'] && name.touched" class="invalid-feedback">
+            Name must be at least 5 characters long.
+        </div>
+
+        <label for="" class="form-group">Your Email:</label>
+        <input type="text" class="form-control" placeholder="Enter your email"
+         ngModel #email="ngModel" name="email" required 
+         [ngClass]="{ 'is-invalid': email?.invalid && email.touched  ? true : false }"
+          minlength="5" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+        <br>
+        <div *ngIf="email?.errors?.['required'] && email.touched" class="invalid-feedback">
+            Email is required.
+        </div>
+        <div *ngIf="email?.errors?.['pattern'] && email.touched" class="invalid-feedback">
+            Please enter a valid email address.
+        </div>
+
+        <label for="" class="form-group">Your Password:</label>
+        <input type="password" class="form-control" placeholder="Enter your password" 
+        ngModel #password="ngModel" name="password" required
+        [ngClass]="{ 'is-invalid': password?.invalid && password.touched  ? true : false }" minlength="5"> <br>
+        <div *ngIf="password?.errors?.['minlength'] && password.touched" class="invalid-feedback">
+            Password must be at least 5 characters long.
+        </div>
+
+        <label for="" class="form-group">Select your role:</label>
+        <select class=" form-select" [(ngModel)]="selectedRole" name="role" required>
+            <option value="ADMIN">Admin</option>
+            <option value="USER">User</option>
+        </select> <br>
+
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+    <div class="separator"></div>
+    <p style="color: black;">Already have an account? <a routerLink="/login">Login</a></p>
+</div>
