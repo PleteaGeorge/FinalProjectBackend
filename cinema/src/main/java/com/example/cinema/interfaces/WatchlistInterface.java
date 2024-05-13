@@ -8,6 +8,5 @@ import java.util.Set;
 public interface WatchlistInterface {
     Set<MovieDto> getAllMoviesFromWatchlist(String email);
     boolean deleteMovieFromWatchlist(String userEmail, Long movieId);
-
-    Watchlist save(Watchlist watchlist);
+    Watchlist addWatchlist(Long movieId, Long userId);
 }

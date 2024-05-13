@@ -34,7 +34,7 @@ export class MoviePageComponent {
   }
   addToWatchList(movie: Movie) {
     this.touched= true;
-    this.movieService.addToWatchlist(movie).subscribe(
+    this.movieService.watchlistService.addToWatchlist(movie).subscribe(
       (data) => {
         if (!data) {
           alert('Please login to add movies to watchlist');

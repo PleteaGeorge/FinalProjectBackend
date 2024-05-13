@@ -8,25 +8,23 @@ import { LocalStorageService } from './local-storage.service';
 })
 export class WatchlistService {
 
-  constructor(private http: HttpClient, private localStorageService: LocalStorageService) { }
+  constructor(private http: HttpClient, 
+    private localStorageService: LocalStorageService) { }
   myUrl = 'http://localhost:8081/api/watchlist';
-
+  myUrlForPostWatchlist="http://localhost:8081/api/watchlist/add";
+  httpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Authorization': 'Bearer ' + this.localStorageService.getItem('token')
+  })
   getWatchlist(): Observable<Movie[]> {
-    const httpHeaders = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Authorization': 'Bearer ' + this.localStorageService.getItem('token')
-    });
-    return this.http.get<Movie[]>(this.myUrl, { headers: httpHeaders });
+    return this.http.get<Movie[]>(this.myUrl, { headers: this.httpHeaders });
   }
   removeFromWatchlist(movie: Movie) : Observable<any> {
-    const httpHeaders = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Authorization': 'Bearer ' + this.localStorageService.getItem('token')
-    });
-    return this.http.delete(this.myUrl + "/remove/" + movie.id, { headers: httpHeaders });
+    return this.http.delete(this.myUrl + "/remove/" + movie.id, { headers: this.httpHeaders });
+  }
+  addToWatchlist(movie: Movie) : Observable<any> {
+    return this.http.post(this.myUrlForPostWatchlist, movie, { headers: this.httpHeaders });
   }
 }

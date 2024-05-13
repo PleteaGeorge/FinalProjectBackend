@@ -26,7 +26,7 @@ export class HomepageComponent implements OnInit{
   }
   addToWatchList(event: Event, movie: Movie) {
     event.preventDefault();
-    this.movieService.addToWatchlist(movie).subscribe(
+    this.movieService.watchlistService.addToWatchlist(movie).subscribe(
       (data) => {
         if (!data) {
           alert('Please login to add movies to watchlist');

@@ -21,23 +21,11 @@ public class WatchlistService implements WatchlistInterface {
     private final MovieService movieService;
 
     @Override
-    public Set<MovieDto> getAllMoviesFromWatchlist(String email) {
-        User user = userService.findByEmail(email);
-        if(user != null) {
-            Set<Watchlist> watchlist = watchlistRepository.findAllByUserId(user.getId());
-            Set<MovieDto> movieDtoSet =  new HashSet<>();
-            for(Watchlist entry: watchlist){
-                Movie movie = movieService.getById(entry.getMovieId());
-                if (movie == null){
-                    throw new RuntimeException("Movie not found from WatchlistService");
-                }
-                MovieDto movieDto = Utility.getMovieDtoMapped(movie);
-                movieDtoSet.add(movieDto);
-            }
-            return movieDtoSet;
-
-        }
-        throw new RuntimeException();
+    public Watchlist addWatchlist(Long movieId, Long userId) {
+        Watchlist watchlist = new Watchlist();
+        watchlist.setMovieId(movieId);
+        watchlist.setUserId(userId);
+        return watchlistRepository.save(watchlist);
     }
     @Override
     public boolean deleteMovieFromWatchlist(String userEmail, Long movieId){
@@ -49,7 +37,24 @@ public class WatchlistService implements WatchlistInterface {
         return false;
     }
     @Override
-    public Watchlist save(Watchlist watchlist) {
-        return watchlistRepository.save(watchlist);
+    public Set<MovieDto> getAllMoviesFromWatchlist(String email) {
+        User user = userService.findByEmail(email);
+        if(user != null) {
+            Set<Watchlist> watchlist = watchlistRepository
+                    .findAllByUserId(user.getId());
+            Set<MovieDto> movieDtoSet =  new HashSet<>();
+            for(Watchlist entry: watchlist){
+                Movie movie = movieService.getById(entry.getMovieId());
+                if (movie == null){
+                    throw new RuntimeException("Movie not found");
+                }
+                MovieDto movieDto = Utility.getMovieDtoMapped(movie);
+                movieDtoSet.add(movieDto);
+            }
+            return movieDtoSet;
+
+        }
+        throw new RuntimeException("Can not found user");
     }
+
 }

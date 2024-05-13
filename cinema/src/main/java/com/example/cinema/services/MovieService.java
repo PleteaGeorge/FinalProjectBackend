@@ -21,12 +21,9 @@ public class MovieService implements MovieInterface {
     private MovieRepository movieRepository;
     @Autowired
     private WatchlistRepository watchlistRepository;
-
-
     public List<MovieDto> getMovieDtoListByGenre(String genre){
         return movieRepository.findAllByGenresName(genre);
     }
-
     @Override
     public MovieDto getByTitle(String title) {
         Movie movie = movieRepository.findByTitle(title);
@@ -52,28 +49,15 @@ public class MovieService implements MovieInterface {
     }
 
     @Override
-    public Watchlist addWatchlist(Long movieId, Long userId) {
-        Watchlist watchlist = new Watchlist();
-        watchlist.setMovieId(movieId);
-        watchlist.setUserId(userId);
-        return watchlistRepository.save(watchlist);
-    }
-    @Override
     public Movie getById(Long movieId) {
         return movieRepository.findById(movieId).orElse(null);
     }
-
     @Override
     public List<MovieDto> getMovieDtoByRating() {
         List<MovieDto> movieDtos = movieRepository.findAllOrderByRatingDesc();
         if (movieDtos.isEmpty()) {
             return Collections.emptyList();
         }
-        movieDtos.forEach(movieDto -> System.out.println(movieDto.getRating()));
         return movieDtos;
-    }
-
-    public Movie getMovieByTitle(String title) {
-        return movieRepository.findByTitle(title);
     }
 }

@@ -38,11 +38,6 @@ public class MovieController {
         }
         return ResponseEntity.ok(movieService.getByTitle(movieTitle));
     }
-    @PostMapping("/watchlist")
-    public ResponseEntity<Watchlist> addMovieToWatchlist(@RequestBody MovieDto movieDto, Authentication authentication) {
-        Long userId = userService.findByEmail(authentication.getName()).getId();
-        return ResponseEntity.ok(movieService.addWatchlist(movieDto.getId(), userId));
-    }
     @GetMapping("/rating")
     public ResponseEntity<List<MovieDto>> getMovieDtosByRating(){
         List<MovieDto> movieDtos = movieService.getMovieDtoByRating();
